@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Weather Franjkovic</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="humidity">Humidity:</string>
+    <string name="wind_speed">Wind speed:</string>
+    <string name="sunrise_set">Sunrise/set:</string>
+    <string name="day_of_week">(day of week)</string>
+    <string name="max_min">(max / min)</string>
+    <string name="my_locations">My locations</string>
+</resources>
