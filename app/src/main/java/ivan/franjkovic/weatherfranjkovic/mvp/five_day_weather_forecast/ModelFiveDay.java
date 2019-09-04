@@ -8,10 +8,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static ivan.franjkovic.weatherfranjkovic.tools.Tools.Constants.API_KEY;
+import static ivan.franjkovic.weatherfranjkovic.tools.Tools.Constants.BASE_URL;
 
 public class ModelFiveDay implements ContractFiveDay.FiveDayModel {
 
-    WeatherApiService service = WeatherApiClient.getClient().create(WeatherApiService.class);
+    WeatherApiService service = WeatherApiClient.getClient(BASE_URL).create(WeatherApiService.class);
 
     @Override
     public void getResult(final OnFinishedListener onFinishedListener, double lat, double lon, String cityName) {

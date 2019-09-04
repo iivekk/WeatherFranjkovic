@@ -32,5 +32,11 @@ public class Tools {
         public static final int REQUEST_LOCATION_PERMISSION = 101;
 
         public static final String ICON_URL = "https://openweathermap.org/img/w/";
+
+        public static final String YT_BASE_URL = "https://www.googleapis.com";
+        public static final String YT_API_KEY = "AIzaSyDJ8gpP8YBFWrxU8x-SH9cYyUr7a7Hnd1s";
+
+        public static final String VIDEO_CODE = "VIDEO_CODE";
+
     }
 }

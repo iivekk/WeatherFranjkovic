@@ -2,10 +2,13 @@ package ivan.franjkovic.weatherfranjkovic.activities;
 
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,12 +29,15 @@ import ivan.franjkovic.weatherfranjkovic.mvp.current_weather_data.ContractCurren
 import ivan.franjkovic.weatherfranjkovic.mvp.current_weather_data.PresenterCurrent;
 import ivan.franjkovic.weatherfranjkovic.mvp.five_day_weather_forecast.ContractFiveDay;
 import ivan.franjkovic.weatherfranjkovic.mvp.five_day_weather_forecast.PresenterFiveDay;
+import ivan.franjkovic.weatherfranjkovic.mvp.you_tube_api.ContractYTApi;
+import ivan.franjkovic.weatherfranjkovic.mvp.you_tube_api.PresenterYTApi;
 import ivan.franjkovic.weatherfranjkovic.tools.Tools;
 
 import static ivan.franjkovic.weatherfranjkovic.tools.Tools.Constants.REQUEST_LOCATION_PERMISSION;
+import static ivan.franjkovic.weatherfranjkovic.tools.Tools.Constants.VIDEO_CODE;
 
 
-public class MainActivity extends BaseActivity implements ContractCurrent.CurrentWeatherView, ContractFiveDay.FiveDayView {
+public class MainActivity extends BaseActivity implements ContractCurrent.CurrentWeatherView, ContractFiveDay.FiveDayView, ContractYTApi.ViewYTA {
 
     @BindView(R.id.tv_current_temp)
     TextView tvTempCurrent;
@@ -87,6 +93,9 @@ public class MainActivity extends BaseActivity implements ContractCurrent.Curren
     private FusedLocationProviderClient client;
     private PresenterCurrent presenterCurrent;
     private PresenterFiveDay presenterFiveDay;
+    private PresenterYTApi presenterYTA;
+
+    private String vCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +108,7 @@ public class MainActivity extends BaseActivity implements ContractCurrent.Curren
 
         presenterCurrent = new PresenterCurrent(this);
         presenterFiveDay = new PresenterFiveDay(this);
+        presenterYTA = new PresenterYTApi(this);
 
         client = LocationServices.getFusedLocationProviderClient(this);
         getLastKnownLocation();
@@ -119,6 +129,7 @@ public class MainActivity extends BaseActivity implements ContractCurrent.Curren
     @Override
     public void setLocationName(String locationName) {
         tvLocationBase.setText(locationName);
+        presenterYTA.requestDataFromServerYTA(locationName);
     }
 
     @Override
@@ -168,6 +179,7 @@ public class MainActivity extends BaseActivity implements ContractCurrent.Curren
         super.onDestroy();
         presenterCurrent.onDestroy();
         presenterFiveDay.onDestroyFiveDay();
+        presenterYTA.onDestroyYTA();
     }
 
     private void getLastKnownLocation() {
@@ -232,5 +244,31 @@ public class MainActivity extends BaseActivity implements ContractCurrent.Curren
     public void getWeather(String cityName) {
         presenterCurrent.requestDataFromServer(0, 0, cityName);
         presenterFiveDay.requestDataFromServerFiveDay(0, 0, cityName);
+    }
+
+    @Override
+    public void setVideoCode(String code) {
+        vCode = code;
+    }
+
+    @Override
+    public void onResponseFailureYTA(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_show_video, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.action_settings) {
+            Intent i = new Intent(this, VideoActivity.class);
+            i.putExtra(VIDEO_CODE, vCode);
+            startActivity(i);
+        }
+        return true;
     }
 }
