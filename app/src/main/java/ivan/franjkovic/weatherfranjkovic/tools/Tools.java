@@ -28,7 +28,7 @@ public class Tools {
 
     public static class Constants {
         public static final String BASE_URL = "https://api.openweathermap.org";
-        public static final String API_KEY = "1864201178f67faa020bc4669244ae06";
+        public static final String API_KEY = "[your api key]";
         public static final int REQUEST_LOCATION_PERMISSION = 101;
 
         public static final String ICON_URL = "https://openweathermap.org/img/w/";
