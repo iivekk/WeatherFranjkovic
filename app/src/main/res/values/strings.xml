@@ -8,4 +8,5 @@
     <string name="day_of_week">(day of week)</string>
     <string name="max_min">(max / min)</string>
     <string name="my_locations">My locations</string>
+    <string name="search_hint">Search...</string>
 </resources>

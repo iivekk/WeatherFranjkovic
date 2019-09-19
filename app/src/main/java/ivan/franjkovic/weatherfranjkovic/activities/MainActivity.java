@@ -34,6 +34,7 @@ import ivan.franjkovic.weatherfranjkovic.mvp.you_tube_api.PresenterYTApi;
 import ivan.franjkovic.weatherfranjkovic.tools.Tools;
 
 import static ivan.franjkovic.weatherfranjkovic.tools.Tools.Constants.REQUEST_LOCATION_PERMISSION;
+import static ivan.franjkovic.weatherfranjkovic.tools.Tools.Constants.SELECTED_CITY;
 import static ivan.franjkovic.weatherfranjkovic.tools.Tools.Constants.VIDEO_CODE;
 
 
@@ -111,7 +112,13 @@ public class MainActivity extends BaseActivity implements ContractCurrent.Curren
         presenterYTA = new PresenterYTApi(this);
 
         client = LocationServices.getFusedLocationProviderClient(this);
-        getLastKnownLocation();
+
+        if (getIntent().hasExtra(SELECTED_CITY)){
+            presenterCurrent.requestDataFromServer(0,0, getIntent().getStringExtra(SELECTED_CITY));
+            presenterFiveDay.requestDataFromServerFiveDay(0,0, getIntent().getStringExtra(SELECTED_CITY));
+        } else {
+            getLastKnownLocation();
+        }
 
     }
 

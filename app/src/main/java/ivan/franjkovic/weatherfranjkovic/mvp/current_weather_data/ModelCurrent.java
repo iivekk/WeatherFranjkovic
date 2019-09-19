@@ -3,7 +3,6 @@ package ivan.franjkovic.weatherfranjkovic.mvp.current_weather_data;
 import ivan.franjkovic.weatherfranjkovic.open_weather_api_models.current_weather_data.ResultForCurrentWeatherData;
 import ivan.franjkovic.weatherfranjkovic.restapi.WeatherApiClient;
 import ivan.franjkovic.weatherfranjkovic.restapi.WeatherApiService;
-import ivan.franjkovic.weatherfranjkovic.tools.Tools;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

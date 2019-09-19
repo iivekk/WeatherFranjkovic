@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -56,8 +57,9 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         int id = menuItem.getItemId();
         switch (id) {
             case R.id.add_location:
-                SearchDialog searchDialog = new SearchDialog();
-                searchDialog.show(getSupportFragmentManager(), "show dialog");
+                /*SearchDialog searchDialog = new SearchDialog();
+                searchDialog.show(getSupportFragmentManager(), "show dialog");*/
+                startActivity(new Intent(this, SearchActivity.class));
                 break;
         }
 

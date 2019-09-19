@@ -8,5 +8,6 @@
     <color name="colorTenPercentTransparentBlack">#1A000000</color>
     <color name="colorGray">#555555</color>
     <color name="text_white">#FFFFFF</color>
+    <color name="colorItemDivider">#33000000</color>
 
 </resources>
