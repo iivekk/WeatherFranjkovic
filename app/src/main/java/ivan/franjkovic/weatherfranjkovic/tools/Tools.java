@@ -28,13 +28,13 @@ public class Tools {
 
     public static class Constants {
         public static final String BASE_URL = "https://api.openweathermap.org";
-        public static final String API_KEY = "1864201178f67faa020bc4669244ae06";
+        public static final String API_KEY = "[your api key]";
         public static final int REQUEST_LOCATION_PERMISSION = 101;
 
         public static final String ICON_URL = "https://openweathermap.org/img/w/";
 
         public static final String YT_BASE_URL = "https://www.googleapis.com";
-        public static final String YT_API_KEY = "AIzaSyDJ8gpP8YBFWrxU8x-SH9cYyUr7a7Hnd1s";
+        public static final String YT_API_KEY = "[your api key]";
 
         public static final String VIDEO_CODE = "VIDEO_CODE";
 
