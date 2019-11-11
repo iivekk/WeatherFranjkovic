@@ -39,7 +39,7 @@ public class Tools {
         public static final String VIDEO_CODE = "VIDEO_CODE";
 
         // autocomplete search
-        public static final String USERNAME = "iivekk";
+        public static final String USERNAME = "[your geoname username]";
         public static final String GEONAMES_BASE_URL = "http://api.geonames.org";
         public static final String PATH_TO_URL_CONTENT = "searchJSON";
         public static final int MAX_ROWS = 20;
