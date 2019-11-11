@@ -51,7 +51,7 @@ public class PresenterCurrent implements ContractCurrent.CurrentWeatherPresenter
     @Override
     public void onFailure(Throwable t) {
         String failureMessage = "";
-        if (t instanceof IOException){
+        if (t instanceof IOException) {
             failureMessage = "No internet connection";
         } else {
             failureMessage = t.getMessage();

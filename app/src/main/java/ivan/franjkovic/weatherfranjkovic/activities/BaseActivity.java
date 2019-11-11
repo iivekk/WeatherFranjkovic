@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,6 +20,7 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 
 import ivan.franjkovic.weatherfranjkovic.R;
+import ivan.franjkovic.weatherfranjkovic.adapter.WeatherListAdapter;
 import ivan.franjkovic.weatherfranjkovic.dialog.SearchDialog;
 
 public class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -36,6 +39,11 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         initWidgets();
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        RecyclerView rv = findViewById(R.id.loc_list);
+        final WeatherListAdapter adapter = new WeatherListAdapter(this);
+        rv.setAdapter(adapter);
+        rv.setLayoutManager(new LinearLayoutManager(this));
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar
                 , R.string.navigation_drawer_open, R.string.navigation_drawer_close);
